@@ -1,0 +1,402 @@
+<div class="ui page dimmer">
+  <div class="content">
+    <h2 class="ui inverted icon header">
+        <div class="ui text large loader">Please wait while we find your results</div>
+      </h2>
+  </div>
+</div>
+ <br>
+<br>
+<div class="ui container">
+<div class="ui basic segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="eight wide column">
+          <div class="ui header4">Do you know...</div>
+          <br>
+          <br>
+         <div class="ui header1">who funds your congressional candidate?<br><br>Voter Cafe is a home for electoral transparency and education. Here you will find information about your November 2018 general election candidates, who funds their campaigns, and how you can get involved.
+        </div>
+        </div>
+        <div class="six wide right floated column">
+          <img src="https://www.svgrepo.com/show/15464/money-bag.svg" class="ui large rounded image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="center aligned centered column">
+    <br>
+          <i class="down brown huge arrow large icon scroll"></i>
+        </div>
+      </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="ui styled fluid accordion">
+  <div class="active title">
+    <div class="ui header huge center-text">Explore by Address</div>
+  </div>
+  <div class="active content">
+            <div class="center-text">Enter your address to find your House and Senate candidates and learn about
+                their campaign finances.</div>
+            <br>
+            <div class="ui grid">
+            <div class="eleven wide centered column">
+            <div id="error" class="header1 red-text"></div>
+            <form class="ui form" action="/home" method="POST" id="form2">
+                <div class="fields">
+                    <div class="ten wide required field">
+                        <label>Street Address</label>
+                        <input type="text" placeholder="ex. 1600 Pennsylvania Ave NW" id="street">
+                    </div>
+                    <div class="six wide required field">
+                        <label>State</label>
+                        <select class="ui fluid dropdown" type="text" id="state2">
+                            <option value="Alabama">Alabama</option>
+                            <option value="Alaska">Alaska</option>
+                            <option value="Arizona">Arizona</option>
+                            <option value="Arkansas">Arkansas</option>
+                            <option value="California">California</option>
+                            <option value="Colorado">Colorado</option>
+                            <option value="Connecticut">Connecticut</option>
+                            <option value="Delaware">Delaware</option>
+                            <option value="Florida">Florida</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Hawaii">Hawaii</option>
+                            <option value="Idaho">Idaho</option>
+                            <option value="Illinois">Illinois</option>
+                            <option value="Indiana">Indiana</option>
+                            <option value="Iowa">Iowa</option>
+                            <option value="Kansas">Kansas</option>
+                            <option value="Kentucky">Kentucky</option>
+                            <option value="Louisiana">Louisiana</option>
+                            <option value="Maine">Maine</option>
+                            <option value="Maryland">Maryland</option>
+                            <option value="Massachusetts">Massachusetts</option>
+                            <option value="Michigan">Michigan</option>
+                            <option value="Minnesota">Minnesota</option>
+                            <option value="Mississippi">Mississippi</option>
+                            <option value="Missouri">Missouri</option>
+                            <option value="Montana">Montana</option>
+                            <option value="Nebraska">Nebraska</option>
+                            <option value="Nevada">Nevada</option>
+                            <option value="New Hampshire">New Hampshire</option>
+                            <option value="New Jersey">New Jersey</option>
+                            <option value="New Mexico">New Mexico</option>
+                            <option value="New York">New York</option>
+                            <option value="North Carolina">North Carolina</option>
+                            <option value="North Dakota">North Dakota</option>
+                            <option value="Ohio">Ohio</option>
+                            <option value="Oklahoma">Oklahoma</option>
+                            <option value="Oregon">Oregon</option>
+                            <option value="Pennsylvania">Pennsylvania</option>
+                            <option value="Rhode Island">Rhode Island</option>
+                            <option value="South Carolina">South Carolina</option>
+                            <option value="South Dakota">South Dakota</option>
+                            <option value="Tennessee">Tennessee</option>
+                            <option value="Texas">Texas</option>
+                            <option value="Utah">Utah</option>
+                            <option value="Vermont">Vermont</option>
+                            <option value="Virginia">Virginia</option>
+                            <option value="Washington">Washington</option>
+                            <option value="West Virginia">West Virginia</option>
+                            <option value="Wisconsin">Wisconsin</option>
+                            <option value="Wyoming">Wyoming</option>
+                        </select>
+                    </div>
+                    
+                    </div>
+                    <div class="fields">
+                    <div class="ten wide required field">
+                        <label>City</label>
+                        <input type="text" placeholder="ex. Washington" id="city">
+                    </div>
+                    <div class="six wide required field">
+                        <label>Zip Code</label>
+                        <input type="text" placeholder="ex. 20500" id="zipcode">
+                    </div>
+                    </div>
+            <div class="ui center aligned basic segment">
+                <button class="ui centered huge brown white-text button" type="submit"><i class="icon search"></i>Discover</button>
+            </div>
+            </form>
+</div>
+</div>
+ </div>
+ <div class="title">
+    <div class="ui header huge center-text">Explore by Candidate</div>
+  </div>
+  <div class="content">
+            <div class="center-text">Enter candidate information below to discover their details and explore their campaign finance sources.</div>
+            <br>
+            <div class="ui grid">
+            <div class="eleven wide centered column">
+            <div id="error2" class="header1 red-text"></div>
+            <form class="ui form" action="/home" method="POST" id="form1">
+                <div class="fields">
+                    <div class="nine wide required field">
+                        <label>Candidate Name</label>
+                        <input type="text" placeholder="Mitch McConnell" id="name">
+                    </div>
+                    <div class="seven wide required field">
+                        <label>State</label>
+                        <select class="ui fluid dropdown" type="text" id="state1">
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="ui center aligned basic segment">
+                <button class="ui centered huge brown white-text button" type="submit"><i class="icon search"></i>Discover</button>
+            </div>
+                    </form>
+                    </div>
+                    </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="ui container">
+<div class="ui segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="eight wide column">
+          <div class="ui header35">Voting Matters</div>
+          <br>
+         even if you're choosing "the lesser of two evils".<br><br>Today's dominant political parties support vastly different policies and your choice can impact you and your community's life in very important ways and on many important issues like health, education, work, national security and immigration. </p>
+            <p>This might be news to many of us, but elected representatives tend to be loyal to the policy position that got them elected in the first place. In other words, representatives tend to be loyal to their constituent's choices. By voting, you make your choices heard.</p>
+        </div>
+        <div class="six wide right floated column">
+          <img src="https://www.tolerance.org/sites/default/files/styles/wysiwyg_large/public/2017-08/Teaching-Tolerance-voting-booth-Corbis-700px.jpg?itok=pm94YQDJ" class="ui large bordered rounded image">
+        </div>
+      </div>
+      <div class="row">
+        <div class="center aligned column">
+          <a class="ui huge button brown white-text" href="https://vote.gov/" target="_blank">Register to vote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{{!-- <div class="ui container">
+    <div class="ui grid">
+      <div class="sixteen wide centered column">
+          <br>
+          <br>
+          <br>
+            <div class="header35 center-text">Learn More</div>
+            <br>
+            <div class="center-text">U.S. elections are affected by a host of issues. Learn more about some of the major ones by clicking on the links below.</div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="ui four link cards">
+                <div class="blue-bg raised card">
+                    <div class="content centered">
+                        <div class="header white-text medium-text centered"><i class='balance icon'></i><br>Citizens United</div>
+                        <br>
+                        <div class="description white-text small-text">
+                            <p>The Supreme Court's 2010 decision helped unleash unprecedented amounts of outside spending
+                                in election cycles. </p>
+                        </div>
+                    </div>
+                    <div class="extra content white-text small-text">
+                        <span class="centered">
+                            <i class="info icon"></i>
+                            Learn more
+                        </span>
+                    </div>
+                </div>
+                <div class="red-bg raised card">
+                    <div class="content">
+                        <div class="header white-text medium-text"><i class='money bill alternate icon'></i><br>Dark Money</div>
+                        <br>
+                        <div class="description white-text small-text">
+                            <p>Dark money groups spend millions to shape our elections without revealing where their money
+                                comes from.</p>
+                        </div>
+                    </div>
+                    <div class="extra content white-text small-text">
+                        <span class="centered">
+                            <i class="info icon"></i>
+                            Learn more
+                        </span>
+                    </div>
+                </div>
+                <div class="blue-bg raised card">
+                    <div class="content">
+                        <div class="header white-text medium-text"><i class='dollar sign icon'></i><br>Price of admission</div>
+                        <br>
+                        <div class="description white-text small-text">
+                            <p>The rising cost of elections discourages those without monied connections, or money themselves,
+                                from running for elected office.</p>
+                        </div>
+                    </div>
+                    <div class="extra content white-text small-text">
+                        <span class="centered">
+                            <i class="info icon"></i>
+                            Learn more
+                        </span>
+                    </div>
+                </div>
+                <div class="red-bg raised card">
+                    <div class="content">
+                        <div class="header white-text medium-text"><i class='sync icon'></i><br>Revolving Door</div>
+                        <br>
+                        <div class="description white-text small-text">
+                            <p>The door that shuffles former federal employees into jobs as lobbyists and consultants just
+                                as it pulls former hired guns into government careers.</p>
+                        </div>
+                    </div>
+                    <div class="extra content white-text small-text">
+                        <span class="centered">
+                            <i class="info icon"></i>
+                            Learn more
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        </div>
+        </div> --}}
+        </div>
+    
+<script>
+
+    $('.ui.black.basic.button').click(function () {
+        $('.ui.form ').addClass('loading');
+    });
+
+   $('.ui.accordion').accordion();
+
+    $(".begin").click(function() {
+    $('html,body').animate({
+        scrollTop: $(".slidetwo").offset().top},
+        'slow');
+    });
+
+    $('.dropdown.menu')
+  .transition('slide down')
+;
+
+$('.ui.dropdown')
+  .dropdown();
+
+    $(function() {
+    $('#form2').submit(function(event) {
+        $('.page').dimmer('show');
+        event.preventDefault(); 
+        var data = {
+            street: $("#street").val(),
+            city: $("#city").val(),
+            state: $("#state2").val(),
+            zipcode: $("#zipcode").val()
+        }
+                $.ajax({
+						type: 'PUT',
+                        url: '/home',
+                        data: data,
+                        datatype: "json",					
+                        success: function(result) {
+                            if (result.data == 'false'){
+                                $('.page').dimmer('hide');
+                                $('#error').text('Something went wrong! Make sure your address is valid and try again.');
+                            } else if (result.data == 'true'){
+                                window.location.href = '/candidates';
+                            }
+                        }
+                    });
+    });
+});
+
+$(function() {
+    $('#form1').submit(function(event) {
+        $('.page').dimmer('show');
+        event.preventDefault(); 
+        var data = {
+            name: $("#name").val(),
+            state: $("#state1").val()
+        }
+        var name = $("#name").val();
+        var body = "congress";
+        var state = $("#state1").val();
+          $.ajax({
+						type: 'PUT',
+                        url: '/candidateinfo',
+                        data: data,
+                        datatype: "json",					
+                        success: function(result) {
+                            if (result.data == 'false'){
+                                $('.page').dimmer('hide');
+                                $('#error2').text('Something went wrong! Make sure candidate information is valid and try again.');
+                            } else if (result.data == 'true'){
+                                var url = '/candidateinfo/' + state + '/' + name;
+                                window.location.href = url;
+                            }
+                        }
+                    });
+        
+    });
+});
+
+</script>

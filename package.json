@@ -1,0 +1,28 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "fs": "0.0.1-security",
+    "fuse.js": "^3.2.1",
+    "g-i-s": "^2.1.2",
+    "gis": "0.0.3",
+    "google-news-rss": "^0.4.1",
+    "he": "^1.1.1",
+    "npm": "^6.3.0",
+    "request": "^2.88.0",
+    "stripe": "^6.12.1",
+    "wtf_wikipedia": "^5.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "browserify ./public/main.js -o ./public/bundle.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,478 @@
+       <div class="ui large modal">
+  <div class="ui inverted dimmer wait">
+    <div class="ui text disabled loader">Getting Contributer Information</div>
+    <div class="ui header red small error"></div>
+  </div>
+  <div class="header"  id="orgname"></div>
+  <div class="content">
+      <div class="ui two column grid">
+        <div class="three wide column">
+      <i class="icon massive users"></i>
+      <br>
+  <div class="ui item">
+    <div class="content">
+      <div class="description">
+          <br>
+        <h4 class="ui header" id="cycle"></h4>
+        <h4 class="ui header" id="totalorg"></h4>
+      </div>
+    </div>
+  </div>
+  </div>
+      <div class="thirteen wide column">
+          <div class="ui statistics">
+  <div class="blue statistic">
+    <div class="value" id='totaldems'>
+    </div>
+    <div class="label" id='totdems'>
+      To Democrats
+    </div>
+  </div>
+  <div class="red statistic">
+    <div class="value" id='totalreps'>
+    </div>
+    <div class="label" id='toreps'>
+      To Republicans
+    </div>
+  </div>
+</div>
+<div class="ui two column grid">
+        <div class="eight wide column">
+                <br>
+            <div class="ui list">
+  <div class="item header" id="orgindiv">
+  </div>
+  <div class="item" id="orgpacs">
+  </div>
+  <div class="item" id="from527">
+  </div>
+  <div class="item" id="orglobby">
+  </div>
+  <div class="item" id="soft">
+  </div>
+  </div>
+            </div>
+            <div class="eight wide column">
+                    <br>
+                <div class="ui list">
+  <div class="item" id="topacs">
+    </div>
+  <div class="item" id="tocom">
+    </div>
+  <div class="item" id="to527">
+    </div>
+    <div class="item" id="tocand">
+    </div>
+    <div class="item" id="independentexp">
+  </div>
+                </div>
+            </div>
+            </div>
+
+
+</div>
+      </div>
+      </div>
+      
+  </div>
+</div>
+        <div class="ui container">
+    <div class="ui doubling stackable two column grid">
+        <br>
+        <br>
+  <br>
+  
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+  <br>
+  <div class="row centered">
+    <div class="ui five wide column items sideC">
+    
+      <div class="ui segment side">
+  <div class="ui centered card">
+  <div class="image basics">
+  </div>
+  
+</div>
+  <br>
+<h4 class="ui color header">Office</h4>
+      <div class="ui clearing divider"></div>
+    
+  <div class="ui centered item">
+    <div class="content">
+      <div class="ui header name"></div>
+      <div class="meta">
+        <span class="office"></span>
+      </div>
+      <div class="description website">
+        <p class="party"></p>
+        <p class="status"></p>
+      </div>
+    </div>
+  </div>
+   <br>
+ <h4 class="ui color header">Personal details</h4>
+      <div class="ui clearing divider"></div>
+     
+  <div class="ui center aligned centered item">
+    <div class="content">
+      <div class="description">
+        <div class='born'>Born
+        <br>
+        <span class="meta"></span>
+        </div>
+        <br>
+        <div class='education'>Education
+        <br>
+        <span class="meta"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+ <h4 class="ui color header">Financial summary</h4>
+      <div class="ui clearing divider"></div>
+      
+  <div class="ui center aligned item">
+    <div class="content">
+      <div class="description financial-summary">
+      </div>
+    </div>
+  </div>
+  <br>
+<h4 class="ui color header">In the news</h4>
+  <div class="ui clearing divider"></div>
+      
+  <div class="ui segment feed news">
+  </div>
+  </div>
+   
+</div>
+
+<div class="ui eleven wide column mainC">
+    <div class="ui segment main">
+      <h4 class="ui color header biography">Biography</h4>
+      <div class="ui clearing divider biography"></div>
+      <div class="bio"></div>
+      <br>
+<h4 class="ui color header">Top Campaign Contributers</h4>
+      <div class="ui clearing divider"></div>
+                <table id="sortable-table1" class="ui very basic unstackable table">
+                        <thead>
+                            <tr>
+                                <th id="name" class="header-custom"><i class="sort icon"></i>Name</th>
+                                <th id="total" class="header-custom"><i class="sort icon"></i>Total Contribution</th>
+                                <th id="indiv" class="header-custom"><i class="sort icon"></i>Individual Contributions</th>
+                                <th id="pacs" class="header-custom"><i class="sort icon"></i>PAC Contributions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body-cont">
+                        </tbody>
+                    </table>
+                    <br>
+<h4 class="ui color header">Top Contributing Industries</h4>
+      <div class="ui clearing divider"></div>
+                <table id="sortable-table2" class="ui very basic unstackable table">
+                        <thead>
+                            <tr>
+                                <th id="name2" class="header-custom"><i class="sort icon"></i>Name</th>
+                                <th id="total2" class="header-custom"><i class="sort icon"></i>Total Contribution</th>
+                                <th id="indiv2" class="header-custom"><i class="sort icon"></i>Individual Contributions</th>
+                                <th id="pacs2" class="header-custom"><i class="sort icon"></i>PAC Contributions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body-ind">
+                        </tbody>
+                    </table>
+                    </div>
+                    </div>
+</div>
+</div>
+</div>
+    
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+<script>
+
+ $(document).ready(function(){
+
+var result = {{{ data }}};
+console.log(result);
+
+  
+var $party = result['party'].replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })
+
+if ($party == "Democratic Party") {
+                 $('.color').css("color", "#3E5BA7");
+            } else if ($party == "Republican Party") {
+                 $('.color').css("color", "#A73E3E");
+            } else if ($party == "Green Party") {
+                 $('.color').css("color", "#3fa73e");
+            } else if ($party == "Libertarian Party") {
+                 $('.color').css("color", "#843ea7");
+            } else if ($party == "Constitution Party") {
+                 $('.color').css("color", "#843ea7");
+            } else {
+                 $('.color').css("color", "#843ea7");
+            }
+
+
+$('.name').html(result["name"]);
+$('.basics').append($('<img>', {'src': result["img"], 'class': 'middle aligned'}));
+if (result["office"] =='House'){
+    $('.office').text(result["state"] + ' District ' + result["district"] + ' ' + result["office"] + " Candidate");
+} else {
+$('.office').text(result["state"] + ' ' + result["office"] + " Candidate");
+}
+$('.party').text($party);
+$('.status').text(result["status"]);
+
+if (result['url']){
+    $('.website').append($('<a>', {'text': 'Website', 'target': '_blank', 'href': result['url']}));
+}
+
+if (!result['url'] && result['personal_details']['website']){
+    $('.website').append($('<a>', {'text': 'Website', 'target': '_blank', 'href': result['personal_details']['website']}));
+}
+
+if (result['personal_details']['born']){
+    $('.born').append($('<span>', {'text': result['personal_details']['born'], 'class': 'meta'}));
+    $('.bio').text(result['personal_details']['description']);
+}
+
+if (!(result['personal_details']['born'])){
+    $('.biography').remove();
+    $('.born').append($('<span>', {'text': 'Unavailable', 'class': 'meta'}));
+}
+
+if (result['personal_details']['education']){
+    $('.education').append($('<span>', {'text': result['personal_details']['education'], 'class': 'meta'}));
+}
+
+if (!(result['personal_details']['education'])){
+    $('.education').append($('<span>', {'text': 'Unavailable', 'class': 'meta'}));
+}
+
+$('.financial-summary').append($('<p>', {'html': "Raised: &#36;" + result['total'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<p>', {'html': "Spent: &#36;" + result['spent'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<p>', {'html': "Cash on Hand: &#36;" + result['cash_on_hand'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<p>', {'html': "Debt: &#36;" + result['debt'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}));
+
+if (result['top_contributers'] !== 'Not Found') {
+var contData = result['top_contributers'];
+
+  for (i = 0; i < contData.length; i++){
+      $('#table-body-cont').append($('<tr>', {'class': 'link contributer'}).append($('<td>', {'html': contData[i]['@attributes']['org_name']})).append($('<td>', {'html': '&#36;' + contData[i]['@attributes']['total'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<td>', {'html': '&#36;' + contData[i]['@attributes']['indivs'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<td>', {'html': '&#36;' + contData[i]['@attributes']['pacs'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})));
+  }
+} else  {
+  document.getElementById('sortable-table1').innerHTML = '';
+  $('#sortable-table1').append($('<h2>', {'class': 'ui header center-text'}).text('Data Unavailable'));
+
+}
+
+if (result['top_industries'] !== 'Not Found') {
+var indData = result['top_industries'];
+
+  for (i = 0; i < indData.length; i++){
+      $('#table-body-ind').append($('<tr>').append($('<td>', {'html': indData[i]['@attributes']['industry_name']})).append($('<td>', {'html': '&#36;' + indData[i]['@attributes']['total'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<td>', {'html': '&#36;' + indData[i]['@attributes']['indivs'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<td>', {'html': '&#36;' + indData[i]['@attributes']['pacs'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})));
+  }
+} else {
+  document.getElementById('sortable-table2').innerHTML = '';
+  $('#sortable-table2').append($('<h2>', {'class': 'ui header center-text'}).text('Data Unavailable'));
+
+}
+
+$(".contributer").click(function(){
+    $('.error').text( '' );
+    $('.loader').removeClass( 'disabled' );
+    $('.ui.dimmer.wait').dimmer({opacity: 1}).dimmer('show');
+    var parameter = { name: $(this).find('td:eq(1)').text()};
+    console.log(parameter);
+    $('.ui.large.modal').modal('show');
+     $.post( '/orginfo', parameter, function(data) {
+        console.log(data.data);
+         if (data.data == false){
+        $('.loader').addClass( 'disabled' );
+        $('.error').text( 'Sorry, information for this contributer is unavailable' );
+        } else {
+         $('.ui.dimmer.wait').dimmer('hide');
+         var data = JSON.parse(data.data);
+         data = data.response.organization['@attributes'];
+         var total = data.total.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var dems = data.dems.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var reps = data.repubs.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var given527 = data['gave_to_527'].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var givencand = data['gave_to_cand'].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var givenpac = data['gave_to_pac'].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var givenparty = data['gave_to_party'].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var indivs = data.indivs.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var lobbying = data.lobbying.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var outside = data.outside.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var pacs = data.pacs.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var soft = data.soft.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         var total527 = data.tot527.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         $('#totalorg').text("Total: $" + total);
+         $('#orgname').text(data.orgname);
+         $('#cycle').text("Cycle: " + data.cycle);
+         $('#totalorg2').text(total);
+         $('#totaldems').text("$" + dems);
+         $('#totalreps').text("$" + reps);
+         $('#orgindiv').text('$' + indivs + ' from individuals');
+         $('#orgpacs').text('$' + pacs + " from organization's PAC(s)" );
+         $('#soft').text('$' + soft + " in soft money" );
+         $('#from527').text('$' + total527 + " coming from 527 organizations" );
+         $('#orglobby').text('$' + lobbying + " in lobbying for 2 years of cycle" );
+         $('#topacs').text('$' + givenpac + " given to PACs" );
+         $('#tocom').text('$' + givenparty + " given to party committees" );
+         $('#to527').text('$' + given527 + " given to 527 organizations" );
+         $('#tocand').text('$' + givencand + " given to candidates" );
+         $('#independentexp').text('$' + outside + " on independent expenditures" );
+         }
+     });
+    }); 
+
+ $(window).on('load', function(){
+     var diff = $(".sideC").outerHeight() - $(".side").outerHeight();
+     $(".news").outerHeight(diff);
+    $(".main").outerHeight($(".mainC").outerHeight());
+    $(".side").outerHeight($(".sideC").outerHeight());
+    {{!-- $(".main").outerHeight($(".mainC").outerHeight()); --}}
+
+for (i = 0; i < 6; i++){
+      var title = result['news'][i]['title'];
+      var link = result['news'][i]['link'];
+      var publisher = link.replace("https://www.","").replace("www.","").replace("http://","").replace("http://www.","").replace("https://",""); 
+      publisher = publisher.substr(0, publisher.indexOf('.com') + 4);
+      var img = result['news'][i]['thumbnailUrl'];
+      var date = result['news'][i]['pubDate'];
+          
+          $('.news').append($('<a>', {'class': 'event', 'href': link, 'target': '_blank'})
+              .append($('<div>', {'class': 'label'})
+                  .append($('<img>', {'src': img})))
+                  .append($('<div>', {'class': 'content'})
+                      .append($('<div>', {'class': 'date'}).text(date.slice(0, -13)))
+                                  .append($('<div>', {'class': 'extra text'}).text(title))
+                          .append($('<div>', {'class': 'summary'}).html(publisher))));
+
+  }
+    });
+
+var f_sl = 1;
+var f_nm = 1;
+
+function sortTable(f,n){
+	var rows = $('#sortable-table1 tbody  tr').get();
+
+	rows.sort(function(a, b) {
+
+		var A = getVal(a);
+		var B = getVal(b);
+
+		if(A < B) {
+			return -1*f;
+		}
+		if(A > B) {
+			return 1*f;
+		}
+		return 0;
+	});
+
+	function getVal(elm){
+		var v = $(elm).children('td').eq(n).text().toUpperCase();
+		if($.isNumeric(v)){
+			v = parseInt(v,10);
+		}
+		return v;
+	}
+
+	$.each(rows, function(index, row) {
+		$('#sortable-table1').children('tbody').append(row);
+	});
+}
+
+$("#name").click(function(){
+    f_sl *= -1;
+    var n = $(this).prevAll().length;
+    sortTable(f_sl,n);
+});
+$("#total").click(function(){
+    f_nm *= -1;
+    var n = $(this).prevAll().length;
+    sortTable(f_nm,n);
+});
+
+$("#indiv").click(function(){
+    f_nm *= -1;
+    var n = $(this).prevAll().length;
+    sortTable(f_nm,n);
+});
+
+$("#pacs").click(function(){
+    f_nm *= -1;
+    var n = $(this).prevAll().length;
+    sortTable(f_nm,n);
+});
+
+
+function sortTable2(f,n){
+	var rows = $('#sortable-table2 tbody  tr').get();
+
+	rows.sort(function(a, b) {
+
+		var A = getVal2(a);
+		var B = getVal2(b);
+
+		if(A < B) {
+			return -1*f;
+		}
+		if(A > B) {
+			return 1*f;
+		}
+		return 0;
+	});
+
+	function getVal2(elm){
+		var v = $(elm).children('td').eq(n).text().toUpperCase();
+		if($.isNumeric(v)){
+			v = parseInt(v,10);
+		}
+		return v;
+	}
+
+	$.each(rows, function(index, row) {
+		$('#sortable-table2').children('tbody').append(row);
+	});
+}
+
+$("#name2").click(function(){
+    f_sl *= -1;
+    var n = $(this).prevAll().length;
+    sortTable2(f_sl,n);
+});
+$("#total2").click(function(){
+    f_nm *= -1;
+    var n = $(this).prevAll().length;
+    sortTable2(f_nm,n);
+});
+
+$("#indiv2").click(function(){
+    f_nm *= -1;
+    var n = $(this).prevAll().length;
+    sortTable2(f_nm,n);
+});
+
+$("#pacs2").click(function(){
+    f_nm *= -1;
+    var n = $(this).prevAll().length;
+    sortTable2(f_nm,n);
+});
+
+ });
+
+
+</script>
+

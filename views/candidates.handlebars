@@ -1,0 +1,233 @@
+<div class="ui container">
+
+<div class="ui doubling stackable grid">
+  <div class="row">
+      
+    <div class="five wide column  firstC">
+      <div class="ui segment first">
+        <div id="candidate-header" class="ui header medium center-text brown-text"></div>
+        <br>
+        <h4 class="ui header">House Representative</h4>
+    <div class="ui clearing divider"></div>
+    <div class="ui items house">
+    </div>
+  <h4 class="ui header">Senate Representatives</h4>
+  <div class="ui clearing divider"></div>
+  <div class="ui items senate">
+  </div>
+      </div>
+    </div>
+    <div class="eleven wide column secondC">
+      <div class="ui top attached two item massive tabular menu">
+  <a id="house" class="active medium header item">
+    House Candidates
+  </a>
+  <a id="senate" class="medium header item">
+    Senate Candidates
+  </a>
+</div>
+<div class="ui bottom attached segment second">
+    <br>
+    
+<div id="candidate-detail" class="ui small header center-text"> click on candidate for more detail</div>
+            <br>
+            <div id="reset" class="ui link three centered stackable cards">
+        </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+
+<br>
+<br>
+
+<script>
+
+    $(document).ready(function () {
+
+    var result = {{{ data }}};
+    console.log(result);
+
+    var district = result['district'];
+    var state = result['state_full'];
+    var stateShort = result['state'];
+
+    $('#candidate-header').html(state + ' District ' + district);
+
+
+    if (result['district_info']['House'].length !== 0){
+        var houseReps = result['district_info']['House'];
+        $(".house").append($('<div>', {'class': 'item'})
+            .append($('<div>', {'class': 'ui small image'}).append($('<img>', {'src': houseReps[0].img.url})))
+            .append($('<div>', {'class': 'content'})
+                .append($('<div>', {'class': 'header'}).text(houseReps[0].name))
+                .append($('<div>', {'class': 'meta'}).append($('</p>').html('<i class="icon users"></i>' + houseReps[0].party))
+                                                    .append($('</p>').html('<i class="icon phone volume"></i>' + houseReps[0].phone))
+                                                    .append($('</p>').html('<i class="icon globe"></i> <a href=' +houseReps[0].link + '> Website</a>'))
+                )
+                    )
+            );
+    }
+
+    if (result['district_info']['Senate'] !== 0){
+        var senateReps = result['district_info']['Senate'];
+        for (i = 0; i < senateReps.length; i++){
+            $(".senate").append($('<div>', {'class': 'item'})
+            .append($('<div>', {'class': 'ui small image'}).append($('<img>', {'src': senateReps[i].img.url})))
+            .append($('<div>', {'class': 'content'})
+                .append($('<div>', {'class': 'header'}).text(senateReps[i].name))
+                .append($('<div>', {'class': 'meta'}).append($('</p>').html('<i class="icon users"></i>' + senateReps[i].party))
+                                                    .append($('</p>').html('<i class="icon phone volume"></i>' + senateReps[i].phone))
+                                                    .append($('</p>').html('<i class="icon globe"></i> <a href=' +senateReps[i].link + '> Website</a>'))
+                )
+                    )
+            );
+        }
+    }
+
+    appendHouseCandidates();
+
+    $(window).on('load', function(){
+    $(".first").outerHeight($(".firstC").outerHeight() + $(".tabular.menu").outerHeight());
+    $(".second").outerHeight($(".secondC").outerHeight() - $(".tabular.menu").outerHeight());
+    console.log('tes');
+    });
+     $(".card").click(function (e) {
+        var name = $(this).find('.header-custom').text();
+        var body = $(this).attr('data-body');
+        var url = '/candidateinfo/' + body + '/' + stateShort + '/' + name;
+        window.location.href = url;
+    });
+
+    $(".tabular .item").click(function(){
+        jQuery(".tabular .item").removeClass('active');
+        jQuery(this).toggleClass('active'); 
+});
+
+    $('#senate').click(function () {
+        appendSenateCandidates();
+        $(".secondC").outerHeight( $(".secondC").outerHeight() + ($("#reset").outerHeight() - $(".second").outerHeight() + $(".tabular.menu").outerHeight()));
+        $(".firstC").outerHeight($(".secondC").outerHeight());
+        $(".first").outerHeight($(".firstC").outerHeight() +30);
+        $(".second").outerHeight($(".secondC").outerHeight() - $(".tabular.menu").outerHeight() +30);
+        $(".card").click(function (e) {
+        var name = $(this).find('.header-custom').text();
+        var body = $(this).attr('data-body');
+        var url = '/candidateinfo/' + body + '/' + stateShort + '/' + name;
+        window.location.href = url;
+    });
+    });
+
+    $('#house').click(function () {
+        appendHouseCandidates();
+        $(".secondC").outerHeight( $(".secondC").outerHeight() + ($("#reset").outerHeight() - $(".second").outerHeight() + $(".tabular.menu").outerHeight()));
+        $(".firstC").outerHeight($(".secondC").outerHeight());
+        $(".first").outerHeight($(".firstC").outerHeight() + 30);
+        $(".second").outerHeight($(".secondC").outerHeight() - $(".tabular.menu").outerHeight() + 30);
+        $(".card").click(function (e) {
+        var name = $(this).find('.header-custom').text();
+        var body = $(this).attr('data-body');
+        var state = stateShort;
+        var url = '/candidateinfo/' + body + '/' + state + '/' + name;
+        window.location.href = url;
+    });
+    });
+
+     
+
+    function appendSenateCandidates() {
+
+        document.getElementById('reset').innerHTML = '';
+
+        $.each(result['Senate'], function (key, value) {
+            var name = value['name'];
+            img = value['img'];
+            status = value['status'];
+            party = value['party'].replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })
+            $image = $('<div/>', { 'class': 'image card-image' }).append($('<img>', { 'src': img }));
+            $card = $('<div/>', { 'class': 'link card', 'data-body':'senate'});
+            var $color;
+            var $status;
+            var website = value['url'];
+           if (party == "Democratic Party") {
+                $color = $('<div/>', { 'class': 'content center aligned'}).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/democrat.svg'}))
+            } else if (party == "Republican Party") {
+                $color = $('<div/>', { 'class': 'content center aligned' }).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/republican.svg'}))
+            } else if (party == "Green Party") {
+                $color = $('<div/>', { 'class': 'content center aligned' }).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/green.svg'}))
+            } else if (party == "Libertarian Party") {
+                $color = $('<div/>', { 'class': 'content center aligned' }).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/libertarian.svg'}))
+            } else if (party == "Constitution Party") {
+                $color = $('<div/>', { 'class': 'content center aligned' }).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/cont.png'}))
+            } else {
+                $color = $('<div/>', { 'class': 'content center aligned' }).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/third.svg'}))
+            }
+
+            if (status == "Incumbent") {
+                $status = "<i class='icon sync'></i>" + status;
+            } else {
+                $status = "<i class='icon redo'></i>" + status; 
+                }
+
+            $('.ui.three.link.cards').append(
+                $card.append($image).append($('<div/>', { 'class': 'content center aligned' }).append(
+                    $('<div/>', { 'class': 'header-custom' }).html(name)).append(
+                        $('<div/>', { 'class': 'meta' }).append($("<span/>", { text: 'Senate Candidate' }))).append(
+                            $('<div/>', { 'class': 'description'}).append($('<p>', {'html': $status})).append($('<a>', {'html': "<i class='icon globe'></i>website", 'class': 'blue-text', 'href': website}))))
+                            .append($color)
+                            );
+
+        });
+    }
+    function appendHouseCandidates() {
+
+        document.getElementById('reset').innerHTML = '';
+        $.each(result['House'], function (key, value) {
+            var name = key;
+            img = value['img'];
+            status = value['status'];
+            party = value['party'].replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })
+            $image = $('<div/>', { 'class': 'image card-image' }).append($('<img>', { 'src': img }));
+            $card = $('<div/>', { 'class': 'link card', 'data-body':'house'});
+            var $color;
+            var $status;
+            var website = value['url'];
+
+            if (party == "Democratic Party") {
+                $color = $('<div/>', { 'class': 'content center aligned'}).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/democrat.svg'}))
+            } else if (party == "Republican Party") {
+                $color = $('<div/>', { 'class': 'content center aligned' }).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/republican.svg'}))
+            } else if (party == "Green Party") {
+                $color = $('<div/>', { 'class': 'content center aligned' }).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/green.svg'}))
+            } else if (party == "Libertarian Party") {
+                $color = $('<div/>', { 'class': 'content center aligned' }).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/libertarian.svg'}))
+            } else if (party == "Constitution Party") {
+                $color = $('<div/>', { 'class': 'content center aligned' }).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/cont.png'}))
+            } else {
+                $color = $('<div/>', { 'class': 'content center aligned' }).append($('<img>', { 'class':'party-icon' ,'src': '/public/img/third.svg'}))
+            }
+
+            if (status == "Incumbent") {
+                $status = "<i class='icon sync'></i>" + status;
+            } else {
+                $status = "<i class='icon redo'></i>" + status; 
+                }
+
+            $('.ui.three.link.cards').append(
+                $card.append($image).append($('<div/>', { 'class': 'content center aligned' }).append(
+                    $('<div/>', { 'class': 'header-custom' }).html(name)).append(
+                        $('<div/>', { 'class': 'meta' }).append($("<span/>", { text: 'House Candidate' }))).append(
+                            $('<div/>', { 'class': 'description'}).append($('<p>', {'html': $status})).append($('<a>', {'html': "<i class='icon globe'></i>website", 'class': 'blue-text', 'href': website}))))
+                            .append($color)
+                            );
+
+        });
+    }
+
+
+});
+</script>
