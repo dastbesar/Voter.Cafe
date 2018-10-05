@@ -290,7 +290,7 @@ $(".contributer").click(function(){
     $('.error').text( '' );
     $('.loader').removeClass( 'disabled' );
     $('.ui.dimmer.wait').dimmer({opacity: 1}).dimmer('show');
-    var parameter = { name: $(this).find('td:eq(1)').text()};
+    var parameter = { name: $(this).find('td:eq(0)').text()};
     console.log(parameter);
     $('.ui.large.modal').modal('show');
      $.post( '/orginfo', parameter, function(data) {
