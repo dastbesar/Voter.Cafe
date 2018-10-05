@@ -62,7 +62,7 @@
     if (result['district_info']['House'].length !== 0){
         var houseReps = result['district_info']['House'];
         $(".house").append($('<div>', {'class': 'item'})
-            .append($('<div>', {'class': 'ui small image'}).append($('<img>', {'src': houseReps[0].img.url})))
+            .append($('<div>', {'class': 'ui small image'}).append($('<img>', {'src': houseReps[0].img})))
             .append($('<div>', {'class': 'content'})
                 .append($('<div>', {'class': 'header'}).text(houseReps[0].name))
                 .append($('<div>', {'class': 'meta'}).append($('</p>').html('<i class="icon users"></i>' + houseReps[0].party))
@@ -77,7 +77,7 @@
         var senateReps = result['district_info']['Senate'];
         for (i = 0; i < senateReps.length; i++){
             $(".senate").append($('<div>', {'class': 'item'})
-            .append($('<div>', {'class': 'ui small image'}).append($('<img>', {'src': senateReps[i].img.url})))
+            .append($('<div>', {'class': 'ui small image'}).append($('<img>', {'src': senateReps[i].img})))
             .append($('<div>', {'class': 'content'})
                 .append($('<div>', {'class': 'header'}).text(senateReps[i].name))
                 .append($('<div>', {'class': 'meta'}).append($('</p>').html('<i class="icon users"></i>' + senateReps[i].party))
