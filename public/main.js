@@ -109,7 +109,7 @@ exports.basicInfo = async function basicInfo(object) {
             object[key][name2]["party"] = array["results"][0]["party_full"];
             object[key][name2]["status"] =
               array["results"][0]["incumbent_challenge_full"];
-            object[key][name2]["img"] = values[1][0];
+            object[key][name2]["img"] = values[1][0]['url'];
             i++;
             if (i == x) {
               resolve();
@@ -418,7 +418,7 @@ exports.canInfo = async function canInfo(object) {
     exports.candidateInfo["party"] = summary["results"][0]["party_full"];
     exports.candidateInfo["status"] =
       summary["results"][0]["incumbent_challenge_full"];
-    exports.candidateInfo["img"] = values[1][0];
+    exports.candidateInfo["img"] = values[1][0]['url'];
     if (summary["results"][0]["district"].charAt(0) == "0") {
       district = district.slice(1);
     }
@@ -439,7 +439,7 @@ exports.canInfo = async function canInfo(object) {
       var financial = JSON.parse(values[2]);
       var contributers = JSON.parse(values[3]);
       var industries = JSON.parse(values[4]);
-      exports.candidateInfo["img"] = values[1][0];
+      exports.candidateInfo["img"] = values[1][0]['url'];
       exports.candidateInfo["total"] =
         financial["response"]["summary"]["@attributes"]["total"];
       exports.candidateInfo["spent"] =
