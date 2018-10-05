@@ -182,17 +182,19 @@ function getCurrentReps() {
           exports.object.district_info["Senate"] = [];
           for (var i = 0; i < result.results.length; i++) {
             if (result.results[i].district == "") {
-              result.results[i]["img"] = await exports.img(
+              var img = await exports.img(
                 result.results[i].name,
                 stateFull
               );
+              result.results[i]["img"] = img[0]['url'];
               exports.object.district_info["Senate"].push(result.results[i]);
             }
             if (result.results[i].district == district) {
-              result.results[i]["img"] = await exports.img(
+              var img = await exports.img(
                 result.results[i].name,
                 stateFull
               );
+              result.results[i]["img"] = img[0]['url'];
               exports.object.district_info["House"].push(result.results[i]);
             }
           }
