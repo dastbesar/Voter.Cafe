@@ -1,5 +1,5 @@
 {
-  "name": "project",
+  "name": "Voter  Cafe",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -11,17 +11,15 @@
     "fs": "0.0.1-security",
     "fuse.js": "^3.2.1",
     "g-i-s": "^2.1.2",
-    "gis": "0.0.3",
     "google-news-rss": "^0.4.1",
-    "he": "^1.1.1",
+    "he": "^1.2.0",
     "npm": "^6.3.0",
     "request": "^2.88.0",
-    "stripe": "^6.12.1",
     "wtf_wikipedia": "^5.2.0"
   },
   "devDependencies": {},
   "scripts": {
-    "build": "browserify ./public/main.js -o ./public/bundle.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC"

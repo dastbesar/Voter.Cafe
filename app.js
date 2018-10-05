@@ -105,14 +105,6 @@ app.post('/contact', function(req, res){
   }
 });
 
-app.get('/termsandconditions', function(req, res){
-  res.render('termsandconditions');
-});
-
-app.get('/privacypolicy', function(req, res){
-  res.render('privacypolicy');
-});
-
 
 app.use(function (err, req, res, next){
   console.error(err.stack);

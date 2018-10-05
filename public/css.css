@@ -4,11 +4,20 @@
   margin: 0 !important;
 }
 
-html,
+html {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
 body {
-  height: 100vh;
+  position: relative;
+  margin: 0;
   font-family: "Fira Sans", sans-serif !important;
   color: #313131 !important;
+}
+
+.buffer{
+  height: 43%;
 }
 
 button {
@@ -50,12 +59,6 @@ button {
 .card-image {
   height: 30vh !important;
   overflow: hidden !important;
-}
-
-.ui.inverted.vertical.footer.brown.segment {
-  left: 0;
-  bottom: 0 !important;
-  width: 100%;
 }
 
 .card-image img {
@@ -322,10 +325,12 @@ a:hover{
 }
 
 .footer {
-  position: absolute !important;
-  left: 0;
+  position: static;
   right: 0;
-  margin: 0 auto;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
 
 .ui.text.menu {
