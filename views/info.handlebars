@@ -204,7 +204,6 @@
  $(document).ready(function(){
 
 var result = {{{ data }}};
-console.log(result);
 
   
 var $party = result['party'].replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })
@@ -291,10 +290,8 @@ $(".contributer").click(function(){
     $('.loader').removeClass( 'disabled' );
     $('.ui.dimmer.wait').dimmer({opacity: 1}).dimmer('show');
     var parameter = { name: $(this).find('td:eq(0)').text()};
-    console.log(parameter);
     $('.ui.large.modal').modal('show');
      $.post( '/orginfo', parameter, function(data) {
-        console.log(data.data);
          if (data.data == false){
         $('.loader').addClass( 'disabled' );
         $('.error').text( 'Sorry, information for this contributer is unavailable' );

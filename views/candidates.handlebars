@@ -50,7 +50,6 @@
     $(document).ready(function () {
 
     var result = {{{ data }}};
-    console.log(result);
 
     var district = result['district'];
     var state = result['state_full'];
@@ -94,7 +93,6 @@
     $(window).on('load', function(){
     $(".first").outerHeight($(".firstC").outerHeight() + $(".tabular.menu").outerHeight());
     $(".second").outerHeight($(".secondC").outerHeight() - $(".tabular.menu").outerHeight());
-    console.log('tes');
     });
      $(".card").click(function (e) {
         var name = $(this).find('.header-custom').text();
