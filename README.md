@@ -4,6 +4,7 @@ Voter Cafe is a web app that finds a user's 2018 midterm election candidates and
 ### Prerequisites
 
 Node.js
+Handlebars.js
 
 ## Authors
 
