@@ -96,15 +96,14 @@ app.get('/support', function(req, res){
   res.render('support');
 });
 
-app.post('/contact', function(req, res){
-  console.log(req.body);
-  if (req.body.name !== "" && req.body.email !== "" && req.body.message !== "") { 
-  res.render('contact-success');
-  } else {
-  res.render('contact-error');
-  }
-});
-
+// app.post('/contact', function(req, res){
+//   console.log(req.body);
+//   if (req.body.name !== "" && req.body.email !== "" && req.body.message !== "") { 
+//   res.render('contact-success');
+//   } else {
+//   res.render('contact-error');
+//   }
+// });
 
 app.use(function (err, req, res, next){
   console.error(err.stack);
