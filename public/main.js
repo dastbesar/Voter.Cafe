@@ -55,6 +55,7 @@ exports.begin = function begin(address) {
         "&benchmark=4&vintage=4&format=json&layers=54",
       function(err, res) {
         var result = JSON.parse(res.body);
+        console.log(result);
         var match = result.result.addressMatches[0];
         if (err || match === undefined) {
           reject(err);
@@ -88,27 +89,29 @@ exports.basicInfo = async function basicInfo(object) {
     for (var key in object) {
       if (key !== "district_info") {
         names = object[key];
+        // console.log(names);
         for (var k in names) {
           var test = fuse.search(k);
           object[key][k]["cid"] = test[0]["CID"];
           object[key][k]["FECCandID"] = test[0]["FECCandID"];
           var name1 = test[0]["Name"];
           var name2 = k;
+          var branch = key;
           Promise.all([
             exports.getCandSummary(test[0]["FECCandID"]),
             exports.img(test[0]["Name"], stateFull),
             name1,
-            name2
+            name2,
+            branch
           ]).then(function(values) {
             var array = JSON.parse(values[0]);
-            var key = array["results"][0]["office_full"];
             var name1 = values[2];
             var name2 = values[3];
+            var key = values[4];
             object[key][name2]["name"] = name1;
             object[key][name2]["office"] = array["results"][0]["office_full"];
             object[key][name2]["party"] = array["results"][0]["party_full"];
-            object[key][name2]["status"] =
-              array["results"][0]["incumbent_challenge_full"];
+            object[key][name2]["status"] = array["results"][0]["incumbent_challenge_full"];
             object[key][name2]["img"] = values[1][0]["url"];
             i++;
             if (i == x) {
@@ -147,7 +150,8 @@ function getCandidates() {
     var name = data[district][i]["name"];
     exports.object["House"][name] = {
       party: candidateFile[state][district][i]["party"],
-      url: candidateFile[state][district][i]["url"]
+      url: candidateFile[state][district][i]["url"],
+      branch: candidateFile[state][district][i]["branch"]
     };
   }
   for (var i = 0; i < candidateFile[state]["0"].length; i++) {
@@ -155,13 +159,15 @@ function getCandidates() {
       var name = candidateFile[state]["0"][i]["name"];
       exports.object["Senate"][name] = {
         party: candidateFile[state]["0"][i]["party"],
-        url: candidateFile[state]["0"][i]["url"]
+        url: candidateFile[state]["0"][i]["url"],
+        branch: candidateFile[state]["0"][i]["branch"],
       };
     } else if (candidateFile[state]["0"][i]["branch"] == "H") {
       var name = candidateFile[state]["0"][i]["name"];
       exports.object["House"][name] = {
         party: candidateFile[state]["0"][i]["party"],
-        url: candidateFile[state]["0"][i]["url"]
+        url: candidateFile[state]["0"][i]["url"],
+        branch: candidateFile[state]["0"][i]["branch"]
       };
     }
   }
@@ -188,7 +194,6 @@ function getCurrentReps() {
               );
               result.results[i]["img"] = img[0]['url'];
               exports.object.district_info["Senate"].push(result.results[i]);
-              console.log(result.results[i]);
             }
             if (result.results[i].district == district) {
               var img = await exports.img(
@@ -457,7 +462,6 @@ exports.canInfo = async function canInfo(object) {
       exports.candidateInfo["news"] = values[5];
       exports.candidateInfo["personal_details"] = values[6];
     }
-    console.log(exports.candidateInfo);
     return exports.candidateInfo;
   }
 };

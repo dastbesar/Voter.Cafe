@@ -117,6 +117,10 @@ app.use(function (req, res){
   res.render('404');
 });
 
-app.listen(process.env.PORT || port, function(){
-  console.log("Express server running");
+// app.listen(process.env.PORT || port, function(){
+//   console.log("Express server running");
+// });
+
+app.listen(app.get('port'), function(){
+  console.log("Express started on http://localhost:" + app.get('port') + 'press Ctrl-C to terminate');
 });
