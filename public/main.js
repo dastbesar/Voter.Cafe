@@ -316,9 +316,10 @@ exports.getNews = function getNews(name) {
 exports.getWiki = async function getWiki(name) {
   var wikiInfo = {};
   var doc = await wtf.fetch(name);
+  var pagedata = doc.json();
   return new Promise(function(resolve, reject) {
     Promise.all([doc, exports.getInfoCard(name)]).then(function(values) {
-      if (values[0]) {
+      if (pagedata.infoboxes.length !== 0) {
         var description1 = values[0].sentences(0).text();
         var description2 = values[0].sentences(1).text();
         var description3 = values[0].sentences(2).text();
@@ -328,12 +329,13 @@ exports.getWiki = async function getWiki(name) {
           education: values[1]["education"],
           website: values[1]["website"]
         };
-      } else {
+        
+      } else if (pagedata.sections[0].depth == "0"){
         wikiInfo = {
-          description: values[1]["born"],
-          born: values[1]["born"],
-          education: values[1]["education"],
-          website: values[1]["website"]
+          description: '',
+          born: '',
+          education: '',
+          website: ''
         };
       }
       resolve(wikiInfo);
@@ -391,6 +393,10 @@ exports.getInfoCard = function getInfoCard(name) {
 
 exports.canInfo = async function canInfo(object) {
   var state = object["state"];
+  var district = object["district"];
+  if (object.body == 'senate'){
+    district = '0';
+  }
   var obj = jsonFile[state];
   var options = {
     threshold: 0.3,
@@ -402,7 +408,9 @@ exports.canInfo = async function canInfo(object) {
   };
   exports.candidateInfo = {};
   var fuse = new Fuse(obj, options);
+  console.log(object["name"]);
   var cidsearch = fuse.search(object["name"]);
+  console.log(cidsearch);
   if (cidsearch.length == "0") {
     return false;
   } else if (cidsearch.length !== "0") {
@@ -420,18 +428,15 @@ exports.canInfo = async function canInfo(object) {
       exports.getWiki(name)
     ]);
     var summary = JSON.parse(values[0]);
-    var district = summary["results"][0]["district"];
     exports.candidateInfo["name"] = name;
     exports.candidateInfo["state"] = state;
     exports.candidateInfo["office"] = summary["results"][0]["office_full"];
     exports.candidateInfo["party"] = summary["results"][0]["party_full"];
     exports.candidateInfo["status"] = summary["results"][0]["incumbent_challenge_full"];
     exports.candidateInfo["img"] = values[1][0]["url"];
-    if (summary["results"][0]["district"].charAt(0) == "0") {
-      district = district.slice(1);
-    }
     exports.candidateInfo["district"] = district;
     var data = candidateFile[state][district];
+    console.log(data);
     var fuse1 = new Fuse(data, options1);
     var urlsearch = fuse1.search(name);
     exports.candidateInfo["url"] = urlsearch[0]["url"];
