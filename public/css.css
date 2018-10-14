@@ -56,10 +56,6 @@ button {
   font-style: italic;
 }
 
-.ui.selection.dropdown .menu {
-  margin: 0 2.5em;
-}
-
 .card-image {
   height: 30vh !important;
   overflow: hidden !important;
@@ -273,7 +269,6 @@ tr td.link:hover {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   border: none !important;
-  left: -50% !important;
 }
 
 a {
