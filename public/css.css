@@ -87,6 +87,11 @@ button {
   font-weight: 700;
 }
 
+.ui.fluid.accordion.mobile-accordian{
+  width: 100%;
+  font-size: 6vw;
+}
+
 .title.home:not(.active):hover {
   background-color: #a5673f !important;
   color: #ffffff !important;
