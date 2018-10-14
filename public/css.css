@@ -68,7 +68,7 @@ button {
 }
 
 .news {
-  height: 300px;
+  height: auto;
   overflow-y: scroll;
   box-shadow: none !important;
   border: none !important;
