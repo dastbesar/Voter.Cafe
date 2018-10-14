@@ -311,7 +311,7 @@ a:hover{
 }
 
 .ui.basic.table {
-  overflow-y: auto;
+  overflow-y: scroll !important;
 }
 
 .ui.accordion .title:not(.ui) {
