@@ -68,6 +68,7 @@ button {
 }
 
 .news {
+  height: 300px;
   overflow-y: scroll;
   box-shadow: none !important;
   border: none !important;
@@ -308,10 +309,6 @@ a:hover{
 
 .selectable{
   cursor: pointer;
-}
-
-.ui.basic.table {
-  overflow-x: scroll !important;
 }
 
 .ui.accordion .title:not(.ui) {
