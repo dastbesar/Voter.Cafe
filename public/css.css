@@ -56,6 +56,10 @@ button {
   font-style: italic;
 }
 
+.ui.selection.dropdown .menu {
+  margin: 0 2.5em;
+}
+
 .card-image {
   height: 30vh !important;
   overflow: hidden !important;
@@ -83,10 +87,16 @@ button {
   font-size: 2em;
 }
 
-.title:not(.active):hover {
+.title.home:not(.active):hover {
   background-color: #a5673f !important;
   color: #ffffff !important;
 }
+
+.sixteen.wide.column.mobile.only {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 
 .ui.small.image {
   width: 90px !important;
