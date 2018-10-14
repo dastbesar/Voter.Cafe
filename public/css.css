@@ -83,15 +83,19 @@ button {
   font-size: 2em;
 }
 
+.pagetitle-mobile {
+  font-weight: 700;
+}
+
 .title.home:not(.active):hover {
   background-color: #a5673f !important;
   color: #ffffff !important;
 }
 
-.sixteen.wide.column.mobile.only {
+/* .sixteen.wide.column.mobile.only {
   padding-left: 0 !important;
   padding-right: 0 !important;
-}
+} */
 
 
 .ui.small.image {
