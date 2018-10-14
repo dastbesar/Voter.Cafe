@@ -235,10 +235,10 @@ tr td.link:hover {
   font-weight: 700;
 }
 
-.contributer:hover{
+/* .contributer:hover{
   cursor: pointer;
   font-weight: 700;
-}
+} */
 
 
 .ui.tabular.menu .active.item {
@@ -302,8 +302,16 @@ a:hover{
   text-transform: none !important;
 }
 
-#sortable-table1 tbody tr:hover{
+/* #sortable-table1 tbody tr:hover{
   background-color: #a5673f !important;
+} */
+
+.selectable{
+  cursor: pointer;
+}
+
+.ui.basic.table {
+  overflow-y: auto;
 }
 
 .ui.accordion .title:not(.ui) {

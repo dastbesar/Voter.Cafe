@@ -77,7 +77,7 @@
   </div>
 </div>
         <div class="ui container">
-    <div class="ui doubling stackable two column grid">
+    <div class="ui stackable two column grid">
         <br>
         <br>
   <br>
@@ -160,7 +160,7 @@
       <br>
 <h4 class="ui color header">Top Campaign Contributers</h4>
       <div class="ui clearing divider"></div>
-                <table id="sortable-table1" class="ui very basic unstackable table">
+                <table id="sortable-table1" class="ui very basic unstackable selectable table">
                         <thead>
                             <tr>
                                 <th id="name" class="header-custom"><i class="sort icon"></i>Name</th>
@@ -175,7 +175,7 @@
                     <br>
 <h4 class="ui color header">Top Contributing Industries</h4>
       <div class="ui clearing divider"></div>
-                <table id="sortable-table2" class="ui very basic unstackable table">
+                <table id="sortable-table2" class="ui very basic unstackable fluid table">
                         <thead>
                             <tr>
                                 <th id="name2" class="header-custom"><i class="sort icon"></i>Name</th>
@@ -265,7 +265,7 @@ if (result['top_contributers'] !== 'Not Found') {
 var contData = result['top_contributers'];
 
   for (i = 0; i < contData.length; i++){
-      $('#table-body-cont').append($('<tr>', {'class': 'link contributer'}).append($('<td>', {'html': contData[i]['@attributes']['org_name']})).append($('<td>', {'html': '&#36;' + contData[i]['@attributes']['total'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<td>', {'html': '&#36;' + contData[i]['@attributes']['indivs'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<td>', {'html': '&#36;' + contData[i]['@attributes']['pacs'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})));
+      $('#table-body-cont').append($('<tr>', {'class': 'link contributer '}).append($('<td>', {'html': contData[i]['@attributes']['org_name']})).append($('<td>', {'html': '&#36;' + contData[i]['@attributes']['total'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<td>', {'html': '&#36;' + contData[i]['@attributes']['indivs'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})).append($('<td>', {'html': '&#36;' + contData[i]['@attributes']['pacs'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")})));
   }
 } else  {
   document.getElementById('sortable-table1').innerHTML = '';
